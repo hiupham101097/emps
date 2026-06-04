@@ -67,15 +67,15 @@ class _HomePageState extends State<HomePage> with WidgetsBindingObserver {
           ? const Center(child: CircularProgressIndicator(color: Colors.white))
           : null,
       resizeToAvoidBottomInset: defaultTargetPlatform == TargetPlatform.android,
-      floatingActionButton: FloatingActionButton(
-        backgroundColor: const Color(0xFF119c72),
-        onPressed: () {
-          config.controller!.reload();
-        },
-        mini: true,
-        shape: const CircleBorder(),
-        child: const Icon(Icons.refresh, color: Colors.white, size: 24),
-      ),
+      // floatingActionButton: FloatingActionButton(
+      //   backgroundColor: const Color(0xFF119c72),
+      //   onPressed: () {
+      //     config.controller!.reload();
+      //   },
+      //   mini: true,
+      //   shape: const CircleBorder(),
+      //   child: const Icon(Icons.refresh, color: Colors.white, size: 24),
+      // ),
     );
   }
 
