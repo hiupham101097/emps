@@ -54,6 +54,11 @@
 	EMPOS uses the camera to allow users to take profile photos and upload images for internal office operations.
 	</string>
 
+	<key>NSMicrophoneUsageDescription</key>
+	<string>
+	EMPOS uses the microphone to record audio and video for internal office operations.
+	</string>
+
 	<key>NSPhotoLibraryAddUsageDescription</key>
 	<string>
 	EMPOS requires permission to save images and files to your Photo Library when requested by the user.

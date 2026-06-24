@@ -5,10 +5,7 @@ import 'package:flutter_inappwebview/flutter_inappwebview.dart';
 class WebViewPage extends StatefulWidget {
   final VoidCallback voidCallback;
 
-  const WebViewPage({
-    super.key,
-    required this.voidCallback,
-  });
+  const WebViewPage({super.key, required this.voidCallback});
 
   @override
   State<WebViewPage> createState() => _WebViewPageState();
@@ -25,9 +22,7 @@ class _WebViewPageState extends State<WebViewPage> {
       backgroundColor: Colors.white,
       body: SafeArea(
         child: InAppWebView(
-          initialUrlRequest: URLRequest(
-            url: WebUri(defaultUrl),
-          ),
+          initialUrlRequest: URLRequest(url: WebUri(defaultUrl)),
 
           initialSettings: InAppWebViewSettings(
             isInspectable: kDebugMode,
@@ -69,6 +64,13 @@ class _WebViewPageState extends State<WebViewPage> {
 
           onWebViewCreated: (webController) {
             controller = webController;
+          },
+
+          onPermissionRequest: (controller, request) async {
+            return PermissionResponse(
+              resources: request.resources,
+              action: PermissionResponseAction.GRANT,
+            );
           },
 
           onLoadStop: (webController, url) async {

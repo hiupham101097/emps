@@ -4,6 +4,7 @@ import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_inappwebview/flutter_inappwebview.dart';
 import 'package:get_it/get_it.dart';
+import 'package:permission_handler/permission_handler.dart';
 import 'home_page.dart';
 import 'models/config_model.dart';
 
@@ -16,8 +17,9 @@ Future<void> main() async {
     await InAppWebViewController.setWebContentsDebuggingEnabled(true);
   }
 
-  var config = ConfigModel();
+  await Permission.camera.request();
 
+  var config = ConfigModel();
   getIt.registerSingleton<ConfigModel>(config);
 
   runApp(const MyApp());
