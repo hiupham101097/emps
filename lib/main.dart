@@ -17,12 +17,24 @@ Future<void> main() async {
     await InAppWebViewController.setWebContentsDebuggingEnabled(true);
   }
 
+  await _resetWebViewData();
   await Permission.camera.request();
+  await Permission.microphone.request();
 
   var config = ConfigModel();
   getIt.registerSingleton<ConfigModel>(config);
 
   runApp(const MyApp());
+}
+
+Future<void> _resetWebViewData() async {
+  try {
+    await InAppWebViewController.clearAllCache(includeDiskFiles: true);
+    await WebStorageManager.instance().deleteAllData();
+    await CookieManager.instance().deleteAllCookies();
+  } catch (error) {
+    debugPrint('Reset WebView data failed: $error');
+  }
 }
 
 class MyApp extends StatelessWidget {
